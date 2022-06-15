@@ -1,21 +1,23 @@
 import requests
 import api
+import testfile2
 
-'''
-r = requests.get("https://www.wetteronline.de/")
-
-
-print(r.status_code)
-print(r.headers)
-#print(r.text)
-with open("outfile.html", "w") as f:
-    f.write(r.text)
-#'''
-
-client = api.WetterOnline()
+#client = api.WetterOnline()
 
 #with open("outfile.html", "w") as f:
-    #f.write(client.get_url("ernstroda"))
+    #f.write(client.location_get_url("ernstroda"))
 
-#print(client.location_get_url("yeet"))
-print(client.location_autocomplete("asdf"))
+#print(client.location.get_url("yeet"))
+#print(client.location.autocomplete("as"))
+#print(client.location.get_url("As, Belgien"))
+
+#with open("outfile.html", "w") as f:
+#    f.write(requests.get("https://www.wetteronline.de/wetter/gotha").text)
+
+#client.weather("1")
+#client.weather("2")
+#client.weather("3")
+
+#print(client)
+
+print(testfile2.returnfunc())
