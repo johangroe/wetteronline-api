@@ -1,23 +1,13 @@
 import requests
-import api
-import testfile2
+import endpoint
 
-#client = api.WetterOnline()
 
-#with open("outfile.html", "w") as f:
-    #f.write(client.location_get_url("ernstroda"))
+#l = endpoint.location("gotha")
+#print(l.url)
+#print(l.autosuggests)
+w = endpoint.weather("wetter/nagar")
 
-#print(client.location.get_url("yeet"))
-#print(client.location.autocomplete("as"))
-#print(client.location.get_url("As, Belgien"))
+print(w.temperature_now)
 
-#with open("outfile.html", "w") as f:
-#    f.write(requests.get("https://www.wetteronline.de/wetter/gotha").text)
-
-#client.weather("1")
-#client.weather("2")
-#client.weather("3")
-
-#print(client)
-
-print(testfile2.returnfunc())
+with open("outfile2.html", "w") as f:
+    f.write(w.debug_raw_html)
