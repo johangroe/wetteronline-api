@@ -104,6 +104,9 @@ class WeatherUtils:
         return soup.find("div", {"id": "nowcast-card-temperature"}).find("div", {"class":"value"}).text
 
     def forecast_24h(self, url: str):
+        """
+        Returns the full 24h forecast of the given `url`. Note that `url` is not a full URL, but a fragment like returned by `location.url`!
+        """
         soup = bs4.BeautifulSoup(self.get_markup(url), "lxml")
         scripts = soup.find("div", {"id": "hourly-container"}).find_all("script")
         returndict = {}
@@ -113,20 +116,20 @@ class WeatherUtils:
             for entry in script.split("\n"):
                 smallreturnlist.append(f'"{entry.split(":")[0]}": {entry.split(":")[1]}')
             smallreturndict = ast.literal_eval("{" + "".join(smallreturnlist) + "}")
-            
+
             ## delete useless keys
             for key in ["dayTime", "daySynonym", "docrootVersion", "windSpeedText", "windDirection"]:
                 smallreturndict.pop(key, None)
             ## delete unknown keys
             for key in ["smog", "tierAppendix", "symbol", "symbolText", "windy"]:
                 smallreturndict.pop(key, None)
-            
+
             hour = smallreturndict.pop("hour")
-            
+
             ## filter doubling hours, the website provides inconsistently between 24 and 47 datapoints
             ## yes, data may be lost here, but the api can assure 24h every call
             if hour in list(returndict):
                 continue
             returndict[hour] = smallreturndict
-        
+
         return returndict
