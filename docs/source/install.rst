@@ -7,8 +7,8 @@ pip
 ###
 
 To install the WetterOnline API, run this command in a terminal of your choice:
+::
 
-.. code-block:: console
     $ pip install wetteronline
 
 
