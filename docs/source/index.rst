@@ -9,9 +9,6 @@ WetterOnline API
 **wetteronline** is a Python library which provides unofficial access to the weatherdata hosted on `wetteronline.de <https://www.wetteronline.de>`_.
 It uses webscraping and (hopefully) offers a *simple* and *intuitive* API.
 
-Check out the :doc:`usage` section for further information, including
-how to :ref:`installation` the project.
-
 .. note::
 
    This project is under active development. (And so is the documentation too!)
