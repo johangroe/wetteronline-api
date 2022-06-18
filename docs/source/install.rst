@@ -16,8 +16,7 @@ To install the WetterOnline API, run this command in a terminal of your choice:
 source code
 ###########
 
-.. Alternatively the source code is available on Github `here <https://github.com/johangroe/wetteronline-api>`_.
-.. You can clone the repository like so:
+Alternatively the source code is available on Github `here <https://github.com/johangroe/wetteronline-api>`_. You can clone the repository like so:
 
 .. .. code-block:: console
 ..    $ git clone https://github.com/johangroe/wetteronline-api.git
