@@ -54,10 +54,6 @@ class LocationUtils:
         Returns the specific weather URL of a given `location`, if the `location` is not found returns `False`.
         """
         r = requests.get(f"https://www.wetteronline.de/search?ireq=true&pid=p_search&searchstring={location}", allow_redirects = False)
-        #print("-----")
-        #print(r.status_code)
-        #print(r.headers)
-        #print("-----")
         soup = bs4.BeautifulSoup(r.text, "lxml")
         try:
             if soup.find("a").get("href").startswith("/wetter/") or soup.find("a").get("href").startswith("/?gid"):
@@ -73,10 +69,6 @@ class LocationUtils:
         Returns a list of autosuggests of a given `location`, if the `location` is not found returns `False`.
         """
         r = requests.get(f"https://www.wetteronline.de/autosuggest?ireq=true&pid=a_autosuggest&s={location}", allow_redirects = False)
-        #print("-----")
-        #print(r.status_code)
-        #print(r.headers)
-        #print("-----")
         returnlist = []
         for i in r.json():
             if "id" in list(i):
@@ -108,13 +100,6 @@ class WeatherUtils:
         """
         Returns the momentary temperature of the given `url`. Note that `url` is not a full URL, but a fragment like returned by `location.url`!
         """
-
-        #r = requests.get(f"https://www.wetteronline.de/{url}", allow_redirects = False)
-        #print("-----")
-        #print(f"https://www.wetteronline.de/{url}")
-        #print(r.status_code)
-        #print(r.headers)
-        #print("-----")
         soup = bs4.BeautifulSoup(self.get_markup(url), "lxml")
         return soup.find("div", {"id": "nowcast-card-temperature"}).find("div", {"class":"value"}).text
 
