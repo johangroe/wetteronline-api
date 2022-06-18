@@ -13,7 +13,8 @@ To install the WetterOnline API, run this command in a terminal of your choice:
     $ pip install wetteronline
 
 
-.. ###########
+source code
+###########
 
 .. Alternatively the source code is available on Github `here <https://github.com/johangroe/wetteronline-api>`_.
 .. You can clone the repository like so:
