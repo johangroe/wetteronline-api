@@ -18,6 +18,6 @@ source code
 
 Alternatively the source code is available on Github `here <https://github.com/johangroe/wetteronline-api>`_. You can clone the repository like so:
 
-.. .. code-block:: console
-..    $ git clone https://github.com/johangroe/wetteronline-api.git
+.. code-block:: console
 
+    $ git clone https://github.com/johangroe/wetteronline-api.git
