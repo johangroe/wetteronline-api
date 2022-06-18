@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'WetterOnline Api'
+project = 'WetterOnline API'
 copyright = '2022, Johan Gröger'
 author = 'Johan Gröger'
 
