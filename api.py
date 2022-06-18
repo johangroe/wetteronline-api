@@ -2,7 +2,8 @@ import requests
 import json
 import bs4
 import typing
-
+import ast
+import html
 
 
 def location(location: str):
@@ -35,8 +36,10 @@ class Weather:
     def __init__(self, url: str):
         raw_html = requests.get(f"https://www.wetteronline.de/{url}", allow_redirects = False).text
         self.debug_raw_html = raw_html
-        self.temperature_now = WeatherUtils(markup = raw_html).temperature_now(url)
-        pass
+        weatherutils = WeatherUtils(markup = raw_html)
+        self.temperature_now = weatherutils.temperature_now(url)
+        self.forecast_24h = weatherutils.forecast_24h(url)
+
 
 
 class LocationUtils:
@@ -114,6 +117,31 @@ class WeatherUtils:
         #print("-----")
         soup = bs4.BeautifulSoup(self.get_markup(url), "lxml")
         return soup.find("div", {"id": "nowcast-card-temperature"}).find("div", {"class":"value"}).text
-    
+
     def forecast_24h(self, url: str):
-        pass
+        soup = bs4.BeautifulSoup(self.get_markup(url), "lxml")
+        scripts = soup.find("div", {"id": "hourly-container"}).find_all("script")
+        returndict = {}
+        for script in scripts:
+            script = html.unescape(str(script).split("({")[1].split("})")[0].strip().replace(" ", ""))
+            smallreturnlist = []
+            for entry in script.split("\n"):
+                smallreturnlist.append(f'"{entry.split(":")[0]}": {entry.split(":")[1]}')
+            smallreturndict = ast.literal_eval("{" + "".join(smallreturnlist) + "}")
+            
+            ## delete useless keys
+            for key in ["dayTime", "daySynonym", "docrootVersion", "windSpeedText", "windDirection"]:
+                smallreturndict.pop(key, None)
+            ## delete unknown keys
+            for key in ["smog", "tierAppendix", "symbol", "symbolText", "windy"]:
+                smallreturndict.pop(key, None)
+            
+            hour = smallreturndict.pop("hour")
+            
+            ## filter doubling hours, the website provides inconsistently between 24 and 47 datapoints
+            ## yes, data may be lost here, but the api can assure 24h every call
+            if hour in list(returndict):
+                continue
+            returndict[hour] = smallreturndict
+        
+        return returndict
