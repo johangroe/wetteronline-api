@@ -2,7 +2,10 @@
 Quickstart
 ==========
 
-Some basic usage:
+Ready to get started?
+
+Basic usage
+###########
 
 .. code-block:: python
 

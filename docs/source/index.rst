@@ -15,7 +15,7 @@ It uses webscraping and (hopefully) offers a *simple* and *intuitive* API.
    This project is under active development. (And so is the documentation too!)
 
 Contents
---------
+########
 
 .. toctree::
 
