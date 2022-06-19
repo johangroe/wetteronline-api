@@ -29,7 +29,7 @@ Advanced usage
     ['New York', 'New York Mills, New York', 'New York, Missouri', 'New York Mills, Minnesota']
     >> w = wetteronline.weather(l.url)
     >> w.forecast_4d
-..    {'19.06.': {
+    {'19.06.': {
         'maxTemperature': 24, 
         'minTemperature': 13, 
         'sunHours': 13, 
