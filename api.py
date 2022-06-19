@@ -4,7 +4,7 @@ import bs4
 import typing
 import ast
 import html
-## non std lib: requests, bs4
+## non std lib: requests, bs4, lxml
 
 
 def location(location: str):
