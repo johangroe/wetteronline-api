@@ -6,7 +6,7 @@ This part of the documentation covers the installation. The first step to using 
 pip
 ###
 
-To install the WetterOnline API, run this command in a terminal of your choice:
+You can install the WetterOnline API via pip in a terminal of your choice:
 
 .. code-block:: console
 
@@ -16,7 +16,7 @@ To install the WetterOnline API, run this command in a terminal of your choice:
 source code
 ###########
 
-Alternatively the source code is available on Github `here <https://github.com/johangroe/wetteronline-api>`_. You can clone the repository like so:
+Alternatively the source code is available on Github `here <https://github.com/johangroe/wetteronline-api>`_. You can clone the repository:
 
 .. code-block:: console
 
