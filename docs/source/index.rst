@@ -3,10 +3,11 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+================
 WetterOnline API
-===================================
+================
 
-**wetteronline** is a Python library which provides unofficial access to the weatherdata hosted on `wetteronline.de <https://www.wetteronline.de>`_.
+**wetteronline** is a Python library which provides unofficial access to the weatherdata hosted on `wetteronline.de <https://www.wetteronline.de>`__.
 It uses webscraping and (hopefully) offers a *simple* and *intuitive* API.
 
 .. note::
@@ -19,5 +20,4 @@ Contents
 .. toctree::
 
    install
-   usage
-   api
+   quickstart
