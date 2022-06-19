@@ -22,6 +22,7 @@ Advanced usage
 ##############
 
 .. code-block:: python
+
     >> import wetteronline
     >> l = wetteronline.location("New York")
     >> l.autosuggests
