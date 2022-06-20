@@ -2,7 +2,7 @@
 Installation
 ============
 
-This part of the documentation covers the installation. The first step to using any software package is getting it properly installed.
+First things first, installing the package.
 
 pip
 ###
@@ -12,7 +12,6 @@ You can install the WetterOnline API via pip in a terminal of your choice:
 .. code-block:: console
 
    $ pip install wetteronline
-
 
 source code
 ###########

@@ -1,8 +1,3 @@
-.. WetterOnline Api documentation master file, created by
-   sphinx-quickstart on Sat Jun 18 08:30:32 2022.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 ================
 WetterOnline API
 ================
@@ -13,6 +8,7 @@ It uses webscraping and (hopefully) offers a *simple* and *intuitive* API.
 .. note::
 
    This project is under active development. (And so is the documentation too!)
+   Choose carefully, wether you want to write code dependent of this package, functions and attributes might change at any time.
 
 Contents
 ########
@@ -21,3 +17,4 @@ Contents
 
    install
    quickstart
+   usage
