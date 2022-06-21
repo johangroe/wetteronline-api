@@ -20,23 +20,23 @@ msgstr ""
 
 #: ../../install.rst:3
 msgid "Installation"
-msgstr ""
+msgstr "Installation"
 
 #: ../../install.rst:5
 msgid "First things first, installing the package."
-msgstr ""
+msgstr "Zuerst muss das Modul installiert werden."
 
 #: ../../install.rst:8
 msgid "pip"
-msgstr ""
+msgstr "pip"
 
 #: ../../install.rst:10
 msgid "You can install the WetterOnline API via pip in a terminal of your choice:"
-msgstr ""
+msgstr "Du kannst die WetterOnline API mithilfe von pip in einem Terminal deiner Wahl installieren:"
 
 #: ../../install.rst:17
 msgid "source code"
-msgstr ""
+msgstr "Quellcode"
 
 #: ../../install.rst:19
 msgid ""
@@ -44,4 +44,6 @@ msgid ""
 "<https://github.com/johangroe/wetteronline-api>`__. You can clone the "
 "repository:"
 msgstr ""
-
+"Alternativ ist der Quellcode auch auf `Github "
+"<https://github.com/johangroe/wetteronline-api>`__ verfügbar. Du kannst das "
+"repository mithilfe von git klonen:"

@@ -20,5 +20,4 @@ msgstr ""
 
 #: ../../usage.rst:3
 msgid "Usage"
-msgstr ""
-
+msgstr "Verwendung"

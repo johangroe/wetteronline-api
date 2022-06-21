@@ -20,17 +20,16 @@ msgstr ""
 
 #: ../../quickstart.rst:3
 msgid "Quickstart"
-msgstr ""
+msgstr "Quickstart"
 
 #: ../../quickstart.rst:5
 msgid "Ready to get started?"
-msgstr ""
+msgstr "Bereit loszulegen?"
 
 #: ../../quickstart.rst:8
 msgid "Basic usage"
-msgstr ""
+msgstr "Grundlegende Verwendung"
 
 #: ../../quickstart.rst:22
 msgid "Advanced usage"
-msgstr ""
-
+msgstr "Fortgeschrittene Verwendung"

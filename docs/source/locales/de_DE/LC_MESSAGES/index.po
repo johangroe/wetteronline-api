@@ -24,15 +24,26 @@ msgstr ""
 
 #: ../../index.rst:5
 msgid ""
-"**wetteronline** ist ein Python Modul, welches inoffiziellen Zugriff auf die Wetterdaten von `wetteronline.de <https://www.wetteronline.de>`__. Es benutzt webscraping und bietet (hoffentlich) eine *simple* und *intuitive* API."
+"**wetteronline** is a Python library which provides unofficial access to "
+"the weatherdata hosted on `wetteronline.de "
+"<https://www.wetteronline.de>`__. It uses webscraping and (hopefully) "
+"offers a *simple* and *intuitive* API."
 msgstr ""
+"**wetteronline** ist ein Python Modul, welches inoffiziellen Zugriff auf "
+"die Wetterdaten von `wetteronline.de "
+"<https://www.wetteronline.de>`__. Es benutzt webscraping und bietet (hoffentlich) "
+"eine *simple* und *intuitive* API."
 
 #: ../../index.rst:10
 msgid ""
-"Dieses Projekt ist unter aktiver Entwicklung. (Die Dokumentation ebenfalls!) Wäge gut ab, ob du bereits Code welcher auf dieses Modul baut schreibst, denn Funktionen und Attribute könnten sich jederzeit ändern."
+"This project is under active development. (And so is the documentation "
+"too!) Choose carefully, wether you want to write code dependent of this "
+"package, functions and attributes might change at any time."
 msgstr ""
+"Dieses Projekt ist unter aktiver Entwicklung. (Die Dokumentation "
+"ebenfalls!) Wäge gut ab, ob du bereits Code welcher auf dieses "
+"Modul baut schreibst, denn Funktionen und Attribute könnten sich jederzeit ändern."
 
 #: ../../index.rst:14
-msgid "Inhalt"
-msgstr ""
-
+msgid "Contents"
+msgstr "Inhalt"
