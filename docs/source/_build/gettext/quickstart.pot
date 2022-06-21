@@ -1,0 +1,33 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, Johan Gröger
+# This file is distributed under the same license as the WetterOnline API package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: WetterOnline API \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-06-21 15:24+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../quickstart.rst:3
+msgid "Quickstart"
+msgstr ""
+
+#: ../../quickstart.rst:5
+msgid "Ready to get started?"
+msgstr ""
+
+#: ../../quickstart.rst:8
+msgid "Basic usage"
+msgstr ""
+
+#: ../../quickstart.rst:22
+msgid "Advanced usage"
+msgstr ""
