@@ -103,40 +103,31 @@ class WeatherUtils:
         Returns the momentary temperature of the given `url`. Note that `url` is not a full URL, but a fragment like returned by `location.url`!
         """
         soup = bs4.BeautifulSoup(self.get_markup(url), "lxml")
-        return soup.find("div", {"id": "nowcast-card-temperature"}).find("div", {"class":"value"}).text
+        temp = soup.find("span", class_="air-temp").string.strip().replace("°","")
+        return int(temp)
 
     def forecast_24h(self, url: str):
         """
         Returns the full 24h forecast of the given `url`. Note that `url` is not a full URL, but a fragment like returned by `location.url`!
         """
         soup = bs4.BeautifulSoup(self.get_markup(url), "lxml")
-        scripts = soup.find("div", {"id": "hourly-container"}).find_all("script")
+        hourlyContainer = soup.find("div", class_="hours-list").find_all("wo-forecast-hour")
         returndict = {}
-        replace_keys = {"windGusts": "windGustsBft", "windDirection": "windDirectionLong", "windDirectionShortSector": "windDirection"}
-        for script in scripts:
-            script = str(script).split("({")[1].split("})")[0].strip().replace(" ", "")
-            smallreturnlist = []
-            for entry in script.split("\n"):
-                if entry.split(":")[0] in list(replace_keys):
-                    smallreturnlist.append(f'"{replace_keys[entry.split(":")[0]]}": {entry.split(":")[1]}')
-                else:
-                    smallreturnlist.append(f'"{entry.split(":")[0]}": {entry.split(":")[1]}')
-            smallreturndict = ast.literal_eval("{" + "".join(smallreturnlist) + "}")
-
-            ## delete useless keys
-            for key in ["dayTime", "daySynonym", "docrootVersion", "windSpeedText", "windDirectionLong"]:
-                smallreturndict.pop(key, None)
-            ## delete unknown keys
-            for key in ["smog", "tierAppendix", "symbol", "symbolText", "windy", "weatherInfoIndex"]:
-                smallreturndict.pop(key, None)
-
-            hour = smallreturndict.pop("hour")
-
-            ## filter doubling hours, the website provides inconsistently between 24 and 47 datapoints
-            ## yes, data may be lost here, but the api can assure 24h every call
-            if hour in list(returndict):
-                continue
-            returndict[hour] = smallreturndict
+    
+        for i in range(24):
+            hour = hourlyContainer[i].find("wo-date-hour").string.strip().replace(" ","")
+            temp = int(hourlyContainer[i].find(class_="temperature").string.strip())
+            rain_raw = hourlyContainer[i].find(class_="description").string.replace("\xa0", "").strip()
+            sky = hourlyContainer[i].find("img", class_="symbol")["alt"]
+            
+            ## precipitation as float
+            rain = int(rain_raw.replace("%", "")) / 100
+            
+            returndict[hour] = {
+                "temperature": temp,
+                "rain": rain,
+                "sky": sky
+            }
 
         return returndict
 
@@ -147,35 +138,40 @@ class WeatherUtils:
         soup = bs4.BeautifulSoup(self.get_markup(url), "lxml")
         ## get dates first
         returndict = {}
-        for i in soup.find("table", {"id":"daterow"}).find_all("th"):
-            date = i.find("span").text
+        table = soup.find("table")
+
+        for i in table.find_all("th"):
+            date = i.find("span", class_="screen-reader-only").string
             if "," in list(date):
                 date = date.split(", ")[1]
             returndict[date] = {}
 
-        weathertable = soup.find("table", {"id": "weather"})
+        weathertable = table.tbody
+        
         ## maxtemp
-        taglist = list(weathertable.find("tr", {"class": "Maximum Temperature"}).find_all("div"))
+        taglist = list(weathertable.find_all("wo-medium-term-weather-temperatures"))
         for i in range(len(taglist)):
-            tag = taglist[i].find_all("span")[1]
-            returndict[list(returndict)[i]]["maxTemperature"] = int(str(tag.text).rstrip("°"))
+            tag = taglist[i].find(class_="max").find("div", class_="temperature").string.strip()
+            returndict[list(returndict)[i]]["maxTemperature"] = int(tag)
 
         ## mintemp
-        taglist = list(weathertable.find("tr", {"class": "Minimum Temperature"}).find_all("div"))
+        taglist = list(weathertable.find_all("wo-medium-term-weather-temperatures"))
         for i in range(len(taglist)):
-            tag = taglist[i].find_all("span")[1]
-            returndict[list(returndict)[i]]["minTemperature"] = int(str(tag.text).rstrip("°"))
+            tag = taglist[i].find(class_="min").find("div", class_="temperature").string.strip()
+            returndict[list(returndict)[i]]["minTemperature"] = int(tag)
 
         ## sunhours
-        taglist = list(weathertable.find("tr", {"id": "sun_teaser"}).find_all("span"))
+        taglist = list(weathertable.find_all("wo-weather-characteristics-sun"))
         for i in range(len(taglist)):
-            tag = taglist[i]
-            returndict[list(returndict)[i]]["sunHours"] = int(str(tag.text).lstrip().rstrip(" Std.\n"))
+            tag = taglist[i].find("div", class_="description").string.strip()
+            returndict[list(returndict)[i]]["sunHours"] = int(tag.lstrip().rstrip(" h\n"))
 
         ## precipitation probability
-        taglist = list(weathertable.find("tr", {"id": "precipitation_teaser"}).find_all("span"))
+        taglist = list(weathertable.find_all("wo-weather-characteristics-precipitation"))
         for i in range(len(taglist)):
-            tag = taglist[i]
-            returndict[list(returndict)[i]]["precipitationProbability"] = int(str(tag.text).lstrip().rstrip(" %\n"))
+            tag = taglist[i].find("div", class_="description").string.strip()
+            ## precipitation as float
+            tag = int(tag.replace("%", "")) / 100
+            returndict[list(returndict)[i]]["precipitationProbability"] = tag
 
         return returndict
