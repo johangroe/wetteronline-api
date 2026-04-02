@@ -1,4 +1,4 @@
 [![status - discontinued / bugfixes only when provided](https://img.shields.io/badge/status-discontinued_/_bugfixes_only_when_provided-orange)](https://github.com/johangroe/)
 # wetteronline-api
-An unofficial API for the german weatherforecast service wetteronline.de .
+An unofficial API for the german weatherforecast service wetteronline.de.
 You can actually fork this module via [pip](https://pypi.org/project/wetteronline/). Docs are located [here](https://wetteronline.readthedocs.io/en/latest/).
